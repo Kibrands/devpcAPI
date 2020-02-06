@@ -13,7 +13,7 @@ const Cart = mongoose.model('Cart',
 );
 
 const Purchase = mongoose.model('Purchase',
-    new mongoose.Schema({ cart: Array, payment: String })
+    new mongoose.Schema({ cart: Array, payment: String, paid: Boolean })
 );
 
 module.exports = {
