@@ -9,7 +9,7 @@ router.get("/products", (req, res) => {
         else res.json(data);
     });
 });
-<<<<<<< HEAD
+//Gloria:
 // READ ONE PRODUCT
 router.get("/products/:id", (req, res) => {
     Product.findOne({ _id: req.params.id }, (err, data) => {
@@ -46,7 +46,5 @@ router.post("/products", (req, res) => {
         else res.json(data);
     });
 });
-=======
->>>>>>> e4d0eaebfde32761afbc887c6c55bb0b4cb94a4b
 
 module.exports = router;
