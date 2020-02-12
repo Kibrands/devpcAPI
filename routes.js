@@ -1,4 +1,4 @@
-const { User, Product, Cart, Purchase } = require("./models.js");
+const cors = require('cors');
 const express = require("express");
 const controller = require("./controllers.js");
 const router = express.Router();
