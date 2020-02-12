@@ -1,14 +1,10 @@
 const { User, Product, Cart, Purchase } = require("./models.js");
 const express = require("express");
+const controller = require("./controllers.js");
 const router = express.Router();
 
 // READ ALL PRODUCTS
-router.get("/products", (req, res) => {
-    Product.find({}, (err, data) => {
-        if (err) res.json({ error: err });
-        else res.json(data);
-    });
-});
+router.get("/products", cors(), controller.readProducts);
 
 // READ ONE PRODUCT
 router.get("/products/:id", (req, res) => {
