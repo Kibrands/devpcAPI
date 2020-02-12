@@ -27,11 +27,17 @@ router.delete("/products/:id", (req, res) => {
 });
 
 // UPDATE ONE PRODUCT
-router.put("/products/:id",  (req, res) => {
-    Product.findOneAndUpdate(
-        { _id: req.params.id },
-        { $set: { title: req.body.title, price: req.body.price, 
-            description: req.body.description, stock: req.body.stock, image: req.body.image } }, 
+router.put("/products/:id", (req, res) => {
+    Product.findOneAndUpdate({ _id: req.params.id }, {
+            $set: {
+                title: req.body.title,
+                price: req.body.price,
+                description: req.body.description,
+                stock: req.body.stock,
+                image: req.body.image,
+                dto: req.body.dto
+            }
+        },
         (err, data) => {
             if (err) res.json({ error: err });
             else res.json(data);
@@ -41,9 +47,15 @@ router.put("/products/:id",  (req, res) => {
 
 // POST/CREATE ONE PRODUCT
 router.post("/products", (req, res) => {
-    const Product = new Product({ title: req.body.title, price: req.body.price,
-         description: req.body.description, stock: req.body.stock, image: req.body.image });
-    User.save((err, data) => {
+    const product = new Product({
+        title: req.body.title,
+        price: req.body.price,
+        description: req.body.description,
+        stock: req.body.stock,
+        image: req.body.image,
+        dto: req.body.dto
+    });
+    product.save((err, data) => {
         if (err) res.json({ error: err });
         else res.json(data);
     });
@@ -74,11 +86,16 @@ router.delete("/users/:id", (req, res) => {
 });
 
 // UPDATE ONE USER
-router.put("/users/:id",  (req, res) => {
-    User.findOneAndUpdate(
-        { _id: req.params.id },
-        { $set: { title: req.body.title, price: req.body.price, 
-            description: req.body.description, stock: req.body.stock, image: req.body.image } }, 
+router.put("/users/:id", (req, res) => {
+    User.findOneAndUpdate({ _id: req.params.id }, {
+            $set: {
+                title: req.body.title,
+                price: req.body.price,
+                description: req.body.description,
+                stock: req.body.stock,
+                image: req.body.image
+            }
+        },
         (err, data) => {
             if (err) res.json({ error: err });
             else res.json(data);
@@ -88,9 +105,14 @@ router.put("/users/:id",  (req, res) => {
 
 // POST/CREATE ONE USER
 router.post("/users", (req, res) => {
-    const User = new Product({ title: req.body.title, price: req.body.price,
-         description: req.body.description, stock: req.body.stock, image: req.body.image });
-         User.save((err, data) => {
+    const user = new User({
+        title: req.body.title,
+        price: req.body.price,
+        description: req.body.description,
+        stock: req.body.stock,
+        image: req.body.image
+    });
+    user.save((err, data) => {
         if (err) res.json({ error: err });
         else res.json(data);
     });

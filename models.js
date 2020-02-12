@@ -1,11 +1,11 @@
 const mongoose = require('mongoose');
 
 const User = mongoose.model('User',
-    new mongoose.Schema({ _id: Number, nick: String, email: String, password: String, adress: String })
+    new mongoose.Schema({ nick: String, email: String, password: String, adress: String })
 );
 
 const Product = mongoose.model('Product',
-    new mongoose.Schema({ _id: Number, title: String, price: Number, description: String, stock: Number, image: String })
+    new mongoose.Schema({ title: String, price: Number, description: String, stock: Number, image: String, dto: Number })
 );
 
 const Cart = mongoose.model('Cart',
