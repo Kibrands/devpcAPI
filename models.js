@@ -5,7 +5,7 @@ const User = mongoose.model('User',
 );
 
 const Product = mongoose.model('Product',
-    new mongoose.Schema({ title: String, price: Number, description: String, stock: Number, image: String, dto: Number })
+    new mongoose.Schema({ title: String, price: Number, description: String, stock: Number, image: String, dto: Number, category: String })
 );
 
 const Cart = mongoose.model('Cart',
