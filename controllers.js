@@ -80,11 +80,10 @@ exports.deleteUser = (req, res) => {
 exports.putUser = (req, res) => {
     User.findOneAndUpdate({ _id: req.params.id }, {
         $set: {
-            title: req.body.title,
-            price: req.body.price,
-            description: req.body.description,
-            stock: req.body.stock,
-            image: req.body.image
+            nick: req.body.nick,
+            email: req.body.email,
+            password: req.body.password,
+            adress: req.body.adress
         }
     },
         (err, data) => {
@@ -96,11 +95,10 @@ exports.putUser = (req, res) => {
 
 exports.postUser = (req, res) => {
     const user = new User({
-        title: req.body.title,
-        price: req.body.price,
-        description: req.body.description,
-        stock: req.body.stock,
-        image: req.body.image
+        nick: req.body.nick,
+        email: req.body.email,
+        password: req.body.password,
+        adress: req.body.adress
     });
     user.save((err, data) => {
         if (err) res.json({ error: err });
