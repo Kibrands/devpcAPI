@@ -105,3 +105,99 @@ exports.postUser = (req, res) => {
         else res.json(data);
     });
 }
+//CART
+exports.readCarts = (req, res) => {
+    Cart.find({}, (err, data) => {
+        if (err) res.json({ error: err });
+        else res.json(data);
+    });
+}
+
+exports.readCart = (req, res) => {
+    Cart.findOne({ _id: req.params.id }, (err, data) => {
+        if (err) res.json({ error: err });
+        else res.json(data);
+    });
+}
+
+exports.deleteCart = (req, res) => {
+    Cart.findOneAndRemove({ _id: req.params.id }, (err, data) => {
+        if (err) res.json({ error: err });
+        else res.json(data);
+    });
+}
+
+exports.putCart = (req, res) => {
+    Cart.findOneAndUpdate({ _id: req.params.id }, {
+        $set: {
+            userId: req.body.userId,
+            productId: req.body.productId,
+            amount: req.body.amount
+        }
+    },
+        (err, data) => {
+            if (err) res.json({ error: err });
+            else res.json(data);
+        }
+    );
+}
+
+exports.postCart = (req, res) => {
+    const cart = new Cart({
+        userId: req.body.userId,
+        productId: req.body.productId,
+        amount: req.body.amount
+    });
+    cart.save((err, data) => {
+        if (err) res.json({ error: err });
+        else res.json(data);
+    });
+}
+//PURCHASE
+exports.readPurchases = (req, res) => {
+    Purchase.find({}, (err, data) => {
+        if (err) res.json({ error: err });
+        else res.json(data);
+    });
+}
+
+exports.readPurchase = (req, res) => {
+    Purchase.findOne({ _id: req.params.id }, (err, data) => {
+        if (err) res.json({ error: err });
+        else res.json(data);
+    });
+}
+
+exports.deletePurchase = (req, res) => {
+    Purchase.findOneAndRemove({ _id: req.params.id }, (err, data) => {
+        if (err) res.json({ error: err });
+        else res.json(data);
+    });
+}
+
+exports.putPurchase = (req, res) => {
+    Purchase.findOneAndUpdate({ _id: req.params.id }, {
+        $set: {
+            cart: req.body.cart,
+            payment: req.body.payment,
+            paid: req.body.paid
+        }
+    },
+        (err, data) => {
+            if (err) res.json({ error: err });
+            else res.json(data);
+        }
+    );
+}
+
+exports.postPurchase = (req, res) => {
+    const purchase = new Purchase({
+        cart: req.body.cart,
+        payment: req.body.payment,
+        paid: req.body.paid
+    });
+    purchase.save((err, data) => {
+        if (err) res.json({ error: err });
+        else res.json(data);
+    });
+}

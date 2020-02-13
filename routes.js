@@ -33,4 +33,34 @@ router.put("/users/:id", cors(), controller.putUser);
 // CREATE ONE USER
 router.post("/users", cors(), controller.postUser);
 
+// READ ALL CARTS
+router.get("/carts", cors(), controller.readCarts);
+
+// READ ONE CART
+router.get("/carts/:id", cors(), controller.readCart);
+
+// DELETE ONE CART
+router.delete("/carts/:id", cors(), controller.deleteCart);
+
+// UPDATE ONE CART
+router.put("/cart/:id", cors(), controller.putCart);
+
+// CREATE ONE CART
+router.post("/carts", cors(), controller.postCart);
+
+// READ ALL PURCHASES
+router.get("/purchases", cors(), controller.readPurchases);
+
+// READ ONE PURCHASE
+router.get("/purchases/:id", cors(), controller.readPurchase);
+
+// DELETE ONE PURCHASE
+router.delete("/purchases/:id", cors(), controller.deletePurchase);
+
+// UPDATE ONE PURCHASE
+router.put("/purchases/:id", cors(), controller.putPurchase);
+
+// CREATE ONE PURCHASE
+router.post("/purchases", cors(), controller.postPurchase);
+
 module.exports = router;
