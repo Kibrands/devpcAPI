@@ -7,111 +7,60 @@ const router = express.Router();
 router.get("/products", cors(), controller.readProducts);
 
 // READ ONE PRODUCT
-router.get("/products/:id", (req, res) => {
-    Product.findOne({ _id: req.params.id }, (err, data) => {
-        if (err) res.json({ error: err });
-        else res.json(data);
-    });
-});
+router.get("/products/:id", cors(), controller.readProduct);
 
 // DELETE ONE PRODUCT
-router.delete("/products/:id", (req, res) => {
-    Product.findOneAndRemove({ _id: req.params.id }, (err, data) => {
-        if (err) res.json({ error: err });
-        else res.json(data);
-    });
-});
+router.delete("/products/:id", cors(), controller.deleteProduct);
 
 // UPDATE ONE PRODUCT
-router.put("/products/:id", (req, res) => {
-    Product.findOneAndUpdate({ _id: req.params.id }, {
-            $set: {
-                title: req.body.title,
-                price: req.body.price,
-                description: req.body.description,
-                stock: req.body.stock,
-                image: req.body.image,
-                dto: req.body.dto
-            }
-        },
-        (err, data) => {
-            if (err) res.json({ error: err });
-            else res.json(data);
-        }
-    );
-});
+router.put("/products/:id", cors(), controller.putProduct);
 
-// POST/CREATE ONE PRODUCT
-router.post("/products", (req, res) => {
-    const product = new Product({
-        title: req.body.title,
-        price: req.body.price,
-        description: req.body.description,
-        stock: req.body.stock,
-        image: req.body.image,
-        dto: req.body.dto
-    });
-    product.save((err, data) => {
-        if (err) res.json({ error: err });
-        else res.json(data);
-    });
-});
+// CREATE ONE PRODUCT
+router.post("/products", cors(), controller.postProduct);
 
 // READ ALL USERS
-router.get("/users", (req, res) => {
-    User.find({}, (err, data) => {
-        if (err) res.json({ error: err });
-        else res.json(data);
-    });
-});
+router.get("/users", cors(), controller.readUsers);
 
 // READ ONE USER
-router.get("/users/:id", (req, res) => {
-    User.findOne({ _id: req.params.id }, (err, data) => {
-        if (err) res.json({ error: err });
-        else res.json(data);
-    });
-});
+router.get("/users/:id", cors(), controller.readUser);
 
 // DELETE ONE USER
-router.delete("/users/:id", (req, res) => {
-    User.findOneAndRemove({ _id: req.params.id }, (err, data) => {
-        if (err) res.json({ error: err });
-        else res.json(data);
-    });
-});
+router.delete("/users/:id", cors(), controller.deleteUser);
 
 // UPDATE ONE USER
-router.put("/users/:id", (req, res) => {
-    User.findOneAndUpdate({ _id: req.params.id }, {
-            $set: {
-                title: req.body.title,
-                price: req.body.price,
-                description: req.body.description,
-                stock: req.body.stock,
-                image: req.body.image
-            }
-        },
-        (err, data) => {
-            if (err) res.json({ error: err });
-            else res.json(data);
-        }
-    );
-});
+router.put("/users/:id", cors(), controller.putUser);
 
-// POST/CREATE ONE USER
-router.post("/users", (req, res) => {
-    const user = new User({
-        title: req.body.title,
-        price: req.body.price,
-        description: req.body.description,
-        stock: req.body.stock,
-        image: req.body.image
-    });
-    user.save((err, data) => {
-        if (err) res.json({ error: err });
-        else res.json(data);
-    });
-});
+// CREATE ONE USER
+router.post("/users", cors(), controller.postUser);
+
+// READ ALL CARTS
+router.get("/carts", cors(), controller.readCarts);
+
+// READ ONE CART
+router.get("/carts/:id", cors(), controller.readCart);
+
+// DELETE ONE CART
+router.delete("/carts/:id", cors(), controller.deleteCart);
+
+// UPDATE ONE CART
+router.put("/cart/:id", cors(), controller.putCart);
+
+// CREATE ONE CART
+router.post("/carts", cors(), controller.postCart);
+
+// READ ALL PURCHASES
+router.get("/purchases", cors(), controller.readPurchases);
+
+// READ ONE PURCHASE
+router.get("/purchases/:id", cors(), controller.readPurchase);
+
+// DELETE ONE PURCHASE
+router.delete("/purchases/:id", cors(), controller.deletePurchase);
+
+// UPDATE ONE PURCHASE
+router.put("/purchases/:id", cors(), controller.putPurchase);
+
+// CREATE ONE PURCHASE
+router.post("/purchases", cors(), controller.postPurchase);
 
 module.exports = router;
