@@ -43,7 +43,7 @@ router.get("/carts/:id", cors(), controller.readCart);
 router.delete("/carts/:id", cors(), controller.deleteCart);
 
 // UPDATE ONE CART
-router.put("/cart/:id", cors(), controller.putCart);
+router.put("/carts/:id", cors(), controller.putCart);
 
 // CREATE ONE CART
 router.post("/carts", cors(), controller.postCart);
