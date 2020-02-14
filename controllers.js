@@ -66,7 +66,7 @@ exports.readUsers = (req, res) => {
 }
 
 exports.readUser = (req, res) => {
-    User.findOne({ _id: req.params.id }, (err, data) => {
+    User.findOne({ nick: req.params.nick }, (err, data) => {
         if (err) res.json({ error: err });
         else res.json(data);
     });
