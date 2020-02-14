@@ -22,7 +22,7 @@ router.post("/products", cors(), controller.postProduct);
 router.get("/users", cors(), controller.readUsers);
 
 // READ ONE USER
-router.get("/users/:id", cors(), controller.readUser);
+router.get("/users/:nick", cors(), controller.readUser);
 
 // DELETE ONE USER
 router.delete("/users/:id", cors(), controller.deleteUser);
