@@ -9,6 +9,9 @@ router.get("/products", cors(), controller.readProducts);
 // READ ONE PRODUCT
 router.get("/products/:id", cors(), controller.readProduct);
 
+// READ PRODUCTS BY CATEGORY
+router.get("/products/:category", cors(), controller.readProductsByCategory);
+
 // DELETE ONE PRODUCT
 router.delete("/products/:id", cors(), controller.deleteProduct);
 

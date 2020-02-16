@@ -15,6 +15,13 @@ exports.readProduct = (req, res) => {
     });
 }
 
+exports.readProductsByCategory = (req, res) => {
+    Product.find({ category: req.params.category }, (err, data) => {
+        if (err) res.json({ error: err });
+        else res.json(data);
+    });
+}
+
 exports.deleteProduct = (req, res) => {
     Product.findOneAndRemove({ _id: req.params.id }, (err, data) => {
         if (err) res.json({ error: err });
