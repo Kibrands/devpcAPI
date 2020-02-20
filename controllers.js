@@ -129,6 +129,13 @@ exports.readCart = (req, res) => {
     });
 }
 
+exports.readCartsByUserId = (req, res) => {
+    Cart.find({ userId: req.params.id }, (err, data) => {
+        if (err) res.json({ error: err });
+        else res.json(data);
+    });
+}
+
 exports.deleteCart = (req, res) => {
     Cart.findOneAndRemove({ _id: req.params.id }, (err, data) => {
         if (err) res.json({ error: err });
