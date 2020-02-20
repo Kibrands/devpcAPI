@@ -42,6 +42,9 @@ router.get("/carts", cors(), controller.readCarts);
 // READ ONE CART
 router.get("/carts/:id", cors(), controller.readCart);
 
+// READ CARTS BY USER ID
+router.get("/carts/user/:id", cors(), controller.readCartsByUserId);
+
 // DELETE ONE CART
 router.delete("/carts/:id", cors(), controller.deleteCart);
 
