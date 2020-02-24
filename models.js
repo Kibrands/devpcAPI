@@ -9,7 +9,7 @@ const Product = mongoose.model('Product',
 );
 
 const Cart = mongoose.model('Cart',
-    new mongoose.Schema({ userId: Number, productId: Number, amount: Number })
+    new mongoose.Schema({ userId: String, productId: String, amount: Number })
 );
 
 const Purchase = mongoose.model('Purchase',
