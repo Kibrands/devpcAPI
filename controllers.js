@@ -143,6 +143,13 @@ exports.deleteCart = (req, res) => {
     });
 }
 
+exports.deleteCartsByIds = (req, res) => {
+    Cart.deleteMany({ userId: req.params.userId, productId: req.params.productId }, (err, data) => {
+        if (err) res.json({ error: err });
+        else res.json(data);
+    });
+}
+
 exports.putCart = (req, res) => {
     Cart.findOneAndUpdate({ _id: req.params.id }, {
             $set: {

@@ -48,6 +48,9 @@ router.get("/carts/user/:id", cors(), controller.readCartsByUserId);
 // DELETE ONE CART
 router.delete("/carts/:id", cors(), controller.deleteCart);
 
+// DELETE CARTS BY PRODUCT AND USER
+router.delete("/carts/user/:userId/product/:productId", cors(), controller.deleteCartsByIds);
+
 // UPDATE ONE CART
 router.put("/carts/:id", cors(), controller.putCart);
 
