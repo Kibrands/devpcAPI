@@ -6,31 +6,31 @@ exports.readProducts = (req, res) => {
         if (err) res.json({ error: err });
         else res.json(data);
     });
-}
+};
 
 exports.readProduct = (req, res) => {
     Product.findOne({ _id: req.params.id }, (err, data) => {
         if (err) res.json({ error: err });
         else res.json(data);
     });
-}
+};
 
 exports.readProductsByCategory = (req, res) => {
     Product.find({ category: req.params.category }, (err, data) => {
         if (err) res.json({ error: err });
         else res.json(data);
     });
-}
+};
 
 exports.deleteProduct = (req, res) => {
     Product.findOneAndRemove({ _id: req.params.id }, (err, data) => {
         if (err) res.json({ error: err });
         else res.json(data);
     });
-}
+};
 
 exports.putProduct = (req, res) => {
-    Product.findOneAndUpdate({ _id: req.params.id }, {
+    Product.updateOne({ _id: req.params.id }, {
             $set: {
                 title: req.body.title,
                 price: req.body.price,
@@ -46,7 +46,7 @@ exports.putProduct = (req, res) => {
             else res.json(data);
         }
     );
-}
+};
 
 exports.postProduct = (req, res) => {
     const product = new Product({
@@ -62,7 +62,7 @@ exports.postProduct = (req, res) => {
         if (err) res.json({ error: err });
         else res.json(data);
     });
-}
+};
 
 //USUARIOS
 exports.readUsers = (req, res) => {
@@ -70,24 +70,24 @@ exports.readUsers = (req, res) => {
         if (err) res.json({ error: err });
         else res.json(data);
     });
-}
+};
 
 exports.readUser = (req, res) => {
     User.findOne({ nick: req.params.nick }, (err, data) => {
         if (err) res.json({ error: err });
         else res.json(data);
     });
-}
+};
 
 exports.deleteUser = (req, res) => {
     User.findOneAndRemove({ _id: req.params.id }, (err, data) => {
         if (err) res.json({ error: err });
         else res.json(data);
     });
-}
+};
 
 exports.putUser = (req, res) => {
-    User.findOneAndUpdate({ _id: req.params.id }, {
+    User.updateOne({ _id: req.params.id }, {
             $set: {
                 nick: req.body.nick,
                 email: req.body.email,
@@ -100,58 +100,60 @@ exports.putUser = (req, res) => {
             else res.json(data);
         }
     );
-}
+};
 
 exports.postUser = (req, res) => {
-        const user = new User({
-            nick: req.body.nick,
-            email: req.body.email,
-            password: req.body.password,
-            adress: req.body.adress
-        });
-        user.save((err, data) => {
-            if (err) res.json({ error: err });
-            else res.json(data);
-        });
-    }
-    //CART
+    const user = new User({
+        nick: req.body.nick,
+        email: req.body.email,
+        password: req.body.password,
+        adress: req.body.adress
+    });
+    user.save((err, data) => {
+        if (err) res.json({ error: err });
+        else res.json(data);
+    });
+};
+//CART
 exports.readCarts = (req, res) => {
     Cart.find({}, (err, data) => {
         if (err) res.json({ error: err });
         else res.json(data);
     });
-}
+};
 
 exports.readCart = (req, res) => {
     Cart.findOne({ _id: req.params.id }, (err, data) => {
         if (err) res.json({ error: err });
         else res.json(data);
     });
-}
+};
 
 exports.readCartsByUserId = (req, res) => {
     Cart.find({ userId: req.params.id }, (err, data) => {
         if (err) res.json({ error: err });
         else res.json(data);
     });
-}
+};
 
 exports.deleteCart = (req, res) => {
     Cart.findOneAndRemove({ _id: req.params.id }, (err, data) => {
         if (err) res.json({ error: err });
         else res.json(data);
     });
-}
+};
 
 exports.deleteCartsByIds = (req, res) => {
-    Cart.deleteMany({ userId: req.params.userId, productId: req.params.productId }, (err, data) => {
-        if (err) res.json({ error: err });
-        else res.json(data);
-    });
-}
+    Cart.deleteMany({ userId: req.params.userId, productId: req.params.productId },
+        (err, data) => {
+            if (err) res.json({ error: err });
+            else res.json(data);
+        }
+    );
+};
 
 exports.putCart = (req, res) => {
-    Cart.findOneAndUpdate({ _id: req.params.id }, {
+    Cart.updateOne({ _id: req.params.id }, {
             $set: {
                 userId: req.body.userId,
                 productId: req.body.productId,
@@ -163,43 +165,43 @@ exports.putCart = (req, res) => {
             else res.json(data);
         }
     );
-}
+};
 
 exports.postCart = (req, res) => {
-        const cart = new Cart({
-            userId: req.body.userId,
-            productId: req.body.productId,
-            amount: req.body.amount
-        });
-        cart.save((err, data) => {
-            if (err) res.json({ error: err });
-            else res.json(data);
-        });
-    }
-    //PURCHASE
+    const cart = new Cart({
+        userId: req.body.userId,
+        productId: req.body.productId,
+        amount: req.body.amount
+    });
+    cart.save((err, data) => {
+        if (err) res.json({ error: err });
+        else res.json(data);
+    });
+};
+//PURCHASE
 exports.readPurchases = (req, res) => {
     Purchase.find({}, (err, data) => {
         if (err) res.json({ error: err });
         else res.json(data);
     });
-}
+};
 
 exports.readPurchase = (req, res) => {
     Purchase.findOne({ _id: req.params.id }, (err, data) => {
         if (err) res.json({ error: err });
         else res.json(data);
     });
-}
+};
 
 exports.deletePurchase = (req, res) => {
-    Purchase.findOneAndRemove({ _id: req.params.id }, (err, data) => {
+    Purchase.deleteOne({ _id: req.params.id }, (err, data) => {
         if (err) res.json({ error: err });
         else res.json(data);
     });
-}
+};
 
 exports.putPurchase = (req, res) => {
-    Purchase.findOneAndUpdate({ _id: req.params.id }, {
+    Purchase.updateOne({ _id: req.params.id }, {
             $set: {
                 cart: req.body.cart,
                 payment: req.body.payment,
@@ -211,7 +213,7 @@ exports.putPurchase = (req, res) => {
             else res.json(data);
         }
     );
-}
+};
 
 exports.postPurchase = (req, res) => {
     const purchase = new Purchase({
@@ -223,4 +225,4 @@ exports.postPurchase = (req, res) => {
         if (err) res.json({ error: err });
         else res.json(data);
     });
-}
+};
